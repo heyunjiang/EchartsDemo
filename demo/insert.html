@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>嵌套</title>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    	window.onload = function(){
+	        var myChart = echarts.init(document.getElementById('main'));
+	        var data = [
+                {value:335, name:'直达'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1048, name:'百度'},
+                {value:251, name:'谷歌'},
+                {value:147, name:'必应'},
+                {value:102, name:'其他'}
+            ].sort(function (a, b) { return a.value - b.value; });
+	        var option = {
+			    title: {
+			        text: '嵌套图',
+			        left: 'center',
+			        top: 20,
+			        textStyle: {
+			            color: '#ccc'
+			        }
+			    },
+			    legend: {
+			        orient: 'vertical',
+			        x: 'left',
+			        data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+			    },
+			    series: [
+			    	{
+			            id: 'a',
+			            name: '访问来源',
+			            type: 'pie',
+			            radius : ['0', '30%'],
+			            label: {
+			                normal: {
+			                    position: 'inner'
+			                }
+			            },
+			            labelLine: {
+			                normal: {
+			                    show: false
+			                }
+			            },
+			            data: [
+			                {value:335, name:'直达', selected:true},
+			                {value:679, name:'营销广告'},
+			                {value:1548, name:'搜索引擎'}
+			            ],
+			        },
+			        {
+			            id: 'b',
+			            name: '访问来源',
+			            type: 'pie',
+			            radius : ['40%', '55%'],
+			            data: data,
+			        },
+			    ]
+			};
+	        myChart.setOption(option);
+	    }
+        
+    </script>
+    <!-- 引入 echarts.js -->
+    <script src="../public/echarts.js"></script>
+</body>
+</html>

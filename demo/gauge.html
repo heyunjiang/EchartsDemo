@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>仪表盘</title>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+    	window.onload = function(){
+	        var myChart = echarts.init(document.getElementById('main'));
+	        var data = [{value: 50, name: '完成率'}];
+	        var option = {
+			    title: {
+			        text: '仪表盘',
+			        left: 'center',
+			        top: 20,
+			        textStyle: {
+			            color: '#ccc'
+			        }
+			    },
+			    toolbox: {
+			    	show : true,
+			    	feature : {
+			            mark : {show: true},
+			            restore : {show: true},
+			            saveAsImage : {show: true}
+			        }
+			    },
+			    series: [
+			    	{
+			            id: 'a',
+			            name: '仪表盘',
+			            type: 'gauge',
+			            data: data,
+			        },
+			    ]
+			};
+	        myChart.setOption(option);
+	    }
+        
+    </script>
+    <!-- 引入 echarts.js -->
+    <script src="../public/echarts.js"></script>
+</body>
+</html>
